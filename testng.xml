@@ -1,0 +1,39 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Touch_Works_Demo_Test_Suite" preserve-order="true" configfailurepolicy="continue">
+
+	<listeners>
+		<listener class-name="gov.dos.Allscripts.Utility.TestProgressLogger"/>
+	</listeners>	
+	
+	<test name="Touch_Works_Baseline_Scheduled_Appointment_New" preserve-order="true">
+   	 	<classes>
+      		<class name="gov.dos.touchworks.testcase.Baseline.Touch_Works_Baseline_Scheduled_Appointment_New"/>
+    	</classes>
+  	</test>
+  	
+  	<test name="Touch_Works_Baseline_Scheduled_Appointment_Modify" preserve-order="true">
+   	 	<classes>
+      		<class name="gov.dos.touchworks.testcase.Baseline.Touch_Works_Baseline_Scheduled_Appointment_Modify"/>
+    	</classes>
+  	</test>
+  	
+  	<test name="Touch_Works_Baseline_Scheduled_Appointment_No_Show" preserve-order="true">
+   	 	<classes>
+      		<class name="gov.dos.touchworks.testcase.Baseline.Touch_Works_Baseline_Scheduled_Appointment_No_Show"/>
+    	</classes>
+  	</test>
+  	
+  	<test name="Touch_Works_Baseline_Search_Patient_Record" preserve-order="true">
+   	 	<classes>
+      		<class name="gov.dos.touchworks.testcase.Baseline.Touch_Works_Baseline_Search_Patient_Record"/>
+    	</classes>
+  	</test>
+  	
+  	<test name="Touch_Works_Baseline_Tasks_New" preserve-order="true">
+   	 	<classes>
+      		<class name="gov.dos.touchworks.testcase.Baseline.Touch_Works_Baseline_Tasks_New"/>
+    	</classes>
+  	</test>
+
+</suite>

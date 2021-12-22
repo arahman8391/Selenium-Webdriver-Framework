@@ -1,0 +1,34 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: windows-latest
+
+variables:
+  COPY_REPORTS: 'find . -type d -path "./*/surefire-reports" -exec cp -r {} .\;'
+
+steps:
+- script: mvn clean install -Dmaven.test.failure.ignore=false
+  displayName: 'Running Baseline Test Automation Suite'
+- publish: $(System.DefaultWorkingDirectory)/target
+  artifact: target
+- publish: src/main/resources/failed-screenshots
+  artifact: failed-screenshots
+- publish: src/main/resources/passed-screenshots
+  artifact: passed-screenshots
+- publish: src/main/resources/test-data
+  artifact: test-data
+- publish: src/main/resources/test-log
+  artifact: test-log
+- download: current
+  patterns: '**/*.zip'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/target/surefire-reports/junitreports/TEST-*.xml'
+    failTaskOnFailedTests: true
